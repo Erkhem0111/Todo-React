@@ -3,10 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { act } from "react";
 
-export const Active = (todos) => {
+export const Active = ({ todos, setTodos }) => {
   return (
     <div className="flex flex-col gap-5 mt-5">
+      {todos.filter((item) => item.isDone === false).length === 0 && (
+        <p className="text-[20px] text-[#6B7280] leading-100% font-normal font-sans flex justify-center pt-8">
+          No active tasks.
+        </p>
+      )}
       {todos
         .filter((item) => {
           return item.isDone === false;
@@ -34,7 +40,12 @@ export const Active = (todos) => {
                   {item.text}
                 </p>
               </div>
-              <Button className="h-10 bg-[#FEF2F2] text-[#EF4444] text-[18px] cursor-pointer">
+              <Button
+                onClick={() => {
+                  setTodos(todos.filter((todo) => todo.id !== item.id));
+                }}
+                className="h-10 bg-[#FEF2F2] text-[#EF4444] text-[18px] cursor-pointer"
+              >
                 Delete
               </Button>
             </CardContent>

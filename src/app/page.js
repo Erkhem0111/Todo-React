@@ -1,12 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsContent } from "@/components/ui/tabs";
 import { Header } from "./_components/Header";
@@ -22,7 +17,7 @@ const Todo = () => {
     <div className="w-screen h-screen flex justify-center pt-15 shadow-2xl">
       <Card className="w-140 h-fit">
         <CardHeader>
-          <Header />
+          <Header todos={todos} setTodos={setTodos} />
           <Tabs defaultValue="all" className="mt-5">
             <TabsList className="flex gap-2 bg-transparent">
               <TabsTrigger
@@ -45,18 +40,15 @@ const Todo = () => {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="all">
-              <All todos={todos} />
+              <All todos={todos} setTodos={setTodos} />
             </TabsContent>
             <TabsContent value="active">
-              <Active todos={todos} />
+              <Active todos={todos} setTodos={setTodos} />
             </TabsContent>
             <TabsContent value="completed">
-              <Completed todos={todos} />
+              <Completed todos={todos} setTodos={setTodos} />
             </TabsContent>
           </Tabs>
-          <CardDescription className="text-[20px] text-[#6B7280] leading-100% font-normal font-sans flex justify-center pt-8">
-            No tasks yet. Add one above!
-          </CardDescription>
         </CardHeader>
         <CardContent className="flex gap-3 pt-10 justify-center">
           <Foot />
