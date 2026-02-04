@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  turbopack: {
+    root: path.join(__dirname, ""), // Sets the root to the directory containing next.config.js
+  },
 };
 
 export default nextConfig;
