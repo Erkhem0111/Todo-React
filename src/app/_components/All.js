@@ -19,13 +19,12 @@ export const All = ({ todos, setTodos }) => {
                 <Checkbox
                   className="cursor-pointer"
                   checked={item.isDone}
-                  onClick={() => {
+                  onCheckedChange={(checked) => {
                     const newTodos = todos.map((todo) => {
                       if (todo.id !== item.id) return todo;
                       return {
-                        isDone: !item.isDone,
-                        text: item.text,
-                        id: item.id,
+                        ...todo,
+                        isDone: !!checked,
                       };
                     });
                     setTodos(newTodos);
