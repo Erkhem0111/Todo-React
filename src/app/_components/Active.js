@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { act } from "react";
 
 export const Active = ({ todos, setTodos }) => {
   return (
@@ -17,8 +16,8 @@ export const Active = ({ todos, setTodos }) => {
         .filter((item) => {
           return item.isDone === false;
         })
-        .map((item, index) => (
-          <Card key={index}>
+        .map((item) => (
+          <Card key={item.id}>
             <CardContent className="flex justify-between items-center h-2">
               <div className="flex gap-3 items-center">
                 <Checkbox
@@ -44,7 +43,7 @@ export const Active = ({ todos, setTodos }) => {
                 onClick={() => {
                   setTodos(todos.filter((todo) => todo.id !== item.id));
                 }}
-                className="h-10 bg-[#FEF2F2] text-[#EF4444] text-[18px] cursor-pointer"
+                className="h-10 bg-red-100 text-[#EF4444] text-[18px] cursor-pointer hover:bg-red-100"
               >
                 Delete
               </Button>

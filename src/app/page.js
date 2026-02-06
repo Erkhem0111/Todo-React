@@ -51,7 +51,7 @@ const Todo = () => {
           </Tabs>
         </CardHeader>
         <CardContent className="flex gap-3 pt-10 justify-center">
-          <Foot />
+          <Foot todos={todos} setTodos={setTodos} />
         </CardContent>
       </Card>
     </div>
