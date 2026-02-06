@@ -12,7 +12,7 @@ export const Foot = ({ todos, setTodos }) => {
         </p>
         <p
           onClick={() => {
-            setTodos([]);
+            setTodos(todos.filter((todo) => !todo.isDone));
           }}
           className="text-[#EF4444] text-[18px] cursor-pointer"
         >
